@@ -14,3 +14,21 @@
     - 노드는 기본적으로 비동기로 동작함.
     - Synchronous 에서는 System Call이 끝날때까지 기다리고 결과물을 가져온다.
     - Asynchronous 에서는 System Call이 완료되지 않아도 나중에 완료가 되면 그때 결과물을 가져온다.
+
+- > ## Expressjs 기초
+  - 어플리케이션
+    - const app = express()
+    - 익스프레스 인스턴스를 의미
+    - 서버에 필요한 기능인 미들웨어를 추가할 수 있다.
+    - 라우팅 설정을 할수있다.
+    - 서버를 요청 대기상태로 둔다.
+  - 미들웨어
+    - 미들웨어는 함수들의 연속.
+    - use로 추가 가능.
+    - 일반 미들웨어(req, res, next) / 에러 미들웨어(err, req, res, next)
+    - 에러미들웨어 : 전달받은 에러를 처리 하거나 next(err) 로 다음 미들웨어로 err를 넘길 수 있다.
+  - 요청객체, 응답객체
+    - 요청객체 : http 모듈의 request객체를 래핑한 것
+    - req.params(), req.query(), req.body() 를 주로 사용한다.
+    - 응답객체 : http 모듈의 request객체를 래핑한 것
+    - res.send(), res.status(), res.json() 을 주로 사용한다.
