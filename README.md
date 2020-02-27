@@ -57,4 +57,4 @@
       - should
       - superTest
     - somethin.spec.js 에서 spec이 들어가있으면 보통 테스트 코드를 작성하는 곳.
-    - assert : 검증모듈
+    - assert : 검증모듈 but 사용하지말고 should를 사용해서 검증한다.
