@@ -64,7 +64,7 @@ describe("GET /user/1", () => {
   describe("성공시", () => {
     it("204를 응답한다", done => {
       request(app)
-        .delete("/users/1")
+        .delete("/users/2")
         .expect(204)
         .end(done);
     });
@@ -74,6 +74,45 @@ describe("GET /user/1", () => {
       request(app)
         .delete("/users/one")
         .expect(400)
+        .end(done);
+    });
+  });
+});
+
+describe("POST /users", () => {
+  describe("성공시", () => {
+    let body;
+    let name = "daniel";
+    before(done => {
+      request(app)
+        .post("/users")
+        .send({ name })
+        .expect(201)
+        .end((err, res) => {
+          body = res.body;
+          done();
+        });
+    });
+    it("생성된 유저 객체를 반환한다.", () => {
+      body.should.have.property("id");
+    });
+    it("입력한 name을 반환한다.", () => {
+      body.should.have.property("name", name);
+    });
+  });
+  describe("실패시", () => {
+    it("name 파라메터 누락시 400을 반환한다.", done => {
+      request(app)
+        .post("/users")
+        .send({})
+        .expect(400)
+        .end(done);
+    });
+    it("name이 중복일 경우 409를 반환한다.", done => {
+      request(app)
+        .post("/users")
+        .send({ name: "hello" })
+        .expect(409)
         .end(done);
     });
   });
