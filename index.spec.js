@@ -33,7 +33,7 @@ describe("GET /users는", () => {
   });
 });
 
-describe("GET /users/1 는", () => {
+describe("GET /users/:id 는", () => {
   describe("성공시", () => {
     it("id가 1인 유저 객체를 반환한다.", done => {
       request(app)
@@ -111,6 +111,49 @@ describe("POST /users", () => {
     it("name이 중복일 경우 409를 반환한다.", done => {
       request(app)
         .post("/users")
+        .send({ name: "hello" })
+        .expect(409)
+        .end(done);
+    });
+  });
+});
+
+describe("PUT /users/:id", () => {
+  describe("성공시", () => {
+    it("변경된 name을 응답한다.", done => {
+      const name = "Super";
+      request(app)
+        .put("/users/3")
+        .send({ name })
+        .end((err, res) => {
+          res.body.should.have.property("name", name);
+          done();
+        });
+    });
+  });
+  describe("실패시", () => {
+    it("정수가 아닌 id일 경우 400을 응답한다.", done => {
+      request(app)
+        .put("/users/one")
+        .expect(400)
+        .end(done);
+    });
+    it("name이 없을 경우 400을 응답한다.", done => {
+      request(app)
+        .put("/users/1")
+        .send({})
+        .expect(400)
+        .end(done);
+    });
+    it("없는 유저일 경우 404을 응답한다.", done => {
+      request(app)
+        .put("/users/3123")
+        .expect(404)
+        .end(done);
+    });
+    it("이름이 중복인 유저일 경우 409을 응답한다.", done => {
+      request(app)
+        .put("/users/3")
         .send({ name: "hello" })
         .expect(409)
         .end(done);
