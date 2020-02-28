@@ -12,7 +12,8 @@ const users = [
 app.use(morgan("dev"));
 
 app.get("/users", function(req, res) {
-  res.json(users);
+  const limit = req.query.limit;
+  res.json(users.slice(0, limit));
 });
 
 app.listen(3000, function() {
