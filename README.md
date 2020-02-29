@@ -70,3 +70,9 @@
 
     - before : it 실행전에 실행됨.
     - done : 비동기면 넣어줌.
+
+  - > ## 코드 리펙토링
+
+    - index.js : 라우팅 로직이 들어갑니다.
+    - user.ctrl.js : api 로직
+    - user.spec.js : 테스트 코드
