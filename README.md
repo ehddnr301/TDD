@@ -84,3 +84,38 @@
         }```
       ````
     - process객체에 담긴 NODE_ENV 가 test가 아니면 로그를 찍도록 해주면 테스트코드에서는 morgan이 log를 찍지 않는다.
+
+  - > ## 데이터베이스 연결
+
+    - SQL
+      - column과 row가 있는 excel같은 데이터 베이스
+    - NoSQL
+      - document형식의 db, json같은 형식, 쉽게변경가능
+    - In Memory DB
+
+      - 메모리형식의 db (redis, memchashed)
+      - 서비스의 성능향상을 위해 사용, 인증토큰, 세션 등에사용
+
+    - SQL 쿼리 기초
+
+      - insert : 데이터 삽입 쿼리
+      - select : 입력한 데이터를 줘야할때 쓰는 쿼리
+      - update : 데이터 갱신 쿼리
+      - delete : 데이터 삭제 쿼리
+
+    - ORM
+
+      - 데이터베이스를 객체로 추상화 해놓은 것을 ORM이라고 한다.
+      - 직접 쿼리를 작성하기 보다 객체의 method를 이용해서 db를 관리할수있다.
+      - 노드의 sql orm 은 sequelize가 있다.
+
+    - User.create({name: "alice"})
+    - User.findAll()
+    - User.update({name:"bek}, {where: {id:1}})
+    - User.destroy({where: {id:1 }})
+
+    - Model
+      - 데이터베이스 테이블을 ORM으로 추상화 한 것을 model이라고 한다.
+      - sequelize.define() : 모델 정의
+      - sequelize.sync() : 데이터베이스 연동
+    -
