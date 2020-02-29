@@ -76,3 +76,11 @@
     - index.js : 라우팅 로직이 들어갑니다.
     - user.ctrl.js : api 로직 (컨트롤러)
     - user.spec.js : 테스트 코드
+    - 테스트 때는 테스트에 관련된 log만 찍히도록 하는것이 좋다.
+    - 환경변수로 NODE_ENV=test 를 주게되면 노드에서는 process라는 객체에 할당되서 들어오게 됩니다.
+    - ````
+        if (process.env.NODE_ENV !== "test") {
+            app.use(morgan("dev"));
+        }```
+      ````
+    - process객체에 담긴 NODE_ENV 가 test가 아니면 로그를 찍도록 해주면 테스트코드에서는 morgan이 log를 찍지 않는다.
