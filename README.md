@@ -118,4 +118,8 @@
       - 데이터베이스 테이블을 ORM으로 추상화 한 것을 model이라고 한다.
       - sequelize.define() : 모델 정의
       - sequelize.sync() : 데이터베이스 연동
-    -
+      - bulkCreate로 샘플 데이터를 만든다.
+
+
+    - Mocha
+      - only를 사용하면 단독으로 실행된다. (it.only, describe.only)
