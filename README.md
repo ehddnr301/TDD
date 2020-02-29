@@ -74,5 +74,5 @@
   - > ## 코드 리펙토링
 
     - index.js : 라우팅 로직이 들어갑니다.
-    - user.ctrl.js : api 로직
+    - user.ctrl.js : api 로직 (컨트롤러)
     - user.spec.js : 테스트 코드
